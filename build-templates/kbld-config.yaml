@@ -1,0 +1,10 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+sources:
+ - image: cartographer:latest
+   path: .
+destinations:
+ - image: cartographer:latest
+   newImage: #@ data.values.build.registry_host + "/" + data.values.build.registry_project + "/cartographer"

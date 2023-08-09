@@ -84,6 +84,14 @@ create_carvel_packaging_objects() {
 
 }
 
+local_dev_stuff() {
+        export REGISTRY_HOST="harbor-repo.vmware.com"
+        export REGISTRY_PROJECT="lever/dev"
+        ytt -f build-templates/kbld-config.yaml -f build-templates/values-schema.yaml -v build.registry_host=${REGISTRY_HOST} -v build.registry_project=${REGISTRY_PROJECT} > kbld-config.yaml
+        ytt -f build-templates/package-build.yml -f build-templates/values-schema.yaml -v build.registry_host=${REGISTRY_HOST} -v build.registry_project=${REGISTRY_PROJECT} > package-build.yml
+        ytt -f build-templates/package-resources.yml -f build-templates/values-schema.yaml > package-resources.yml
+}
+
 populate_release_dir() {
         mkdir -p $RELEASE_DIR
         cp -r $SCRATCH/package/* $RELEASE_DIR

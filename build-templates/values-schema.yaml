@@ -1,0 +1,10 @@
+#@data/values-schema
+---
+build:
+  registry_host: docker.io
+  registry_project: projectcartographer/package-for-cartographer
+
+name: cartographer.tanzu.vmware.com
+version: v0.0.0-dev
+image: "harbor-repo.vmware.com/ryankilroy/package-for-carto-kctrl"
+released_at: "2023-08-08T21:23:54Z"
