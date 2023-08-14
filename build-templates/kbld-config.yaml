@@ -2,9 +2,7 @@
 ---
 apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
-sources:
- - image: cartographer:latest
-   path: .
-destinations:
- - image: cartographer:latest
-   newImage: #@ data.values.build.registry_host + "/" + data.values.build.registry_project + "/cartographer"
+overrides:
+- image: #@ data.values.build.registry_host + "/" + data.values.build.registry_project
+  newImage: harbor-repo.vmware.com/ryankilroy/carto-koless@sha256:d932c5482271b3a28abf69749773b0913712a1be05969eb870268a34678be0ba
+  preresolved: true
