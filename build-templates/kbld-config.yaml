@@ -1,8 +1,7 @@
-#@ load("@ytt:data", "data")
 ---
 apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
 overrides:
-- image: projectcartographer/cartographer@sha256:92571feb671e76304a95b5518ab0708f11652a81a2eea09399172fc3091dccdb
+- imageRepo: projectcartographer/cartographer
   newImage: harbor-repo.vmware.com/ryankilroy/carto-koless@sha256:d932c5482271b3a28abf69749773b0913712a1be05969eb870268a34678be0ba
   preresolved: true
