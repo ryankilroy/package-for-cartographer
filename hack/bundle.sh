@@ -46,9 +46,9 @@ show_vars() {
 create_imgpkg_bundle() {
         mkdir -p $SCRATCH/bundle/{.imgpkg,config}
 
-        cp -r ./src/cartographer/config/{objects,overlays,upstream} $SCRATCH/bundle/config
+        cp -r ./carvel/{objects,overlays,upstream} $SCRATCH/bundle/config
         kbld \
-                -f ./src/cartographer/config/upstream \
+                -f ./carvel/upstream \
                 --imgpkg-lock-output $SCRATCH/bundle/.imgpkg/images.yml \
                 >/dev/null
 
