@@ -2,6 +2,6 @@
 apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
 overrides:
-- imageRepo: projectcartographer/cartographer
-  newImage: harbor-repo.vmware.com/ryankilroy/carto-koless@sha256:d932c5482271b3a28abf69749773b0913712a1be05969eb870268a34678be0ba
-  preresolved: true
+  - imageRepo: projectcartographer/cartographer
+    newImage: harbor-repo.vmware.com/ryankilroy/lever/cartographer@sha256:f6aed46b85c74102912f48db77bb78603e5db1e5b2c6f980c0f3aadebc9a20d9
+    preresolved: true
