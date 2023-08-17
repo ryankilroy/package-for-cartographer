@@ -18,13 +18,14 @@ ytt -f build-templates/package-build.yml -f build-templates/values-schema.yaml -
 ytt -f build-templates/package-resources.yml -f build-templates/values-schema.yaml > package-resources.yml
 
 export LEVER_BUILD_ID=$(leverctl request package create \
+  --publish-to-constellation \
   --kubeconfig <(printf "${LEVER_KUBECONFIG}") \
   --git-branch unused \
   --git-commit ${PACKAGE_GIT_COMMIT} \
   --git-url https://github.com/ryankilroy/package-for-cartographer.git \
   --name-prefix package-for-carto-lever \
   --package-build package-build.yml \
-  --package-version ${PACKAGE_VERSION}\
-  --imgpkg-bundle ${REGISTRY_HOST}/${REGISTRY_PROJECT}/imgpkg-bundle:latest)
+  --package-version ${PACKAGE_VERSION} \
+  --imgpkg-bundle ${REGISTRY_HOST}/${REGISTRY_PROJECT}/imgpkg-bundle:${PACKAGE_VERSION})
 
 echo "export CURRENT_LEVER_BUILD=$(echo $LEVER_BUILD_ID | grep "Created request" | awk '{print $3}')"
