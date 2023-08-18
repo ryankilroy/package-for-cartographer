@@ -20,6 +20,8 @@ ytt -f build-templates/kbld-config.yaml -f build-templates/values-schema.yaml -v
 ytt -f build-templates/package-build.yml -f build-templates/values-schema.yaml -v build.registry_host=${REGISTRY_HOST} -v build.registry_project=${REGISTRY_PROJECT} > package-build.yml
 ytt -f build-templates/package-resources.yml -f build-templates/values-schema.yaml > package-resources.yml
 
+lever_build_request()
+
 lever_build_request() {
         readonly BUILD_SUFFIX="$(git rev-parse HEAD | head -c 6)-$(echo $RANDOM | shasum | head -c 6; echo)"
         ytt --ignore-unknown-comments -f ./hack/lever/lever_build_request.yaml \
