@@ -12,7 +12,7 @@ spec:
   releaseNotes: https://github.com/vmware-tanzu/package-for-cartographer/releases/
   releasedAt: null
   valuesSchema:
-    openAPIv3: null
+    openAPIv3: #@ yaml.decode(data.values.components)["schemas"]["dataValues"]
   template:
     spec:
       fetch:
